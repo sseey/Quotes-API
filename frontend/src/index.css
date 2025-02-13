@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+
+/* Applique la police de l'input partout */
+body,
+h1, h2, h3, h4, h5, h6,
+p, button, input, textarea, blockquote {
+    font-family: inherit; /* Hérite de la police de l'input */
+}
+
+/* Centrage de la carte */
+.quote-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* Formulaire */
+.quote-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    margin-top: 20px;
+}
+
+/* Citation */
+.quote-text {
+    color: white;
+    font-size: 20px;
+    font-style: italic;
+}
+
+/* Titre */
+.quote-title {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Zone de texte */
+.quote-input {
+    width: 100%;
+    height: 50px;
+    padding: 12px;
+    font-size: 18px;
+    border: 2px solid #363636;
+    background-color: #121212;
+    color: white;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s ease-in-out;
+    font-family: inherit; /* Assure que la police est utilisée partout */
+}
+
+.quote-input:focus {
+    border-color: #f0c65c;
+}
+
+/* Bouton Ajouter */
+.quote-button {
+    margin-top: 15px;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: #d4af37;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.quote-button:hover {
+    transform: scale(1.05);
+    background-color: #f0c65c;
+}
+
+/* Applique la même police à tout le texte */
+.citation-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    font-family: inherit; /* Uniformisation */
+}
+
+.citation-text {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: white;
+    font-family: inherit; /* Uniformisation */
+}
+
+/* Fond d'écran */
+body {
+    font-family: 'Poppins', sans-serif; /* Police moderne */
+    color: white;
+    background: url('/bilbon.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* Calque sombre couvrant TOUTE la page et estompé */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.9) 0%,    
+        rgba(0, 0, 0, 0.6) 25%,   
+        rgba(0, 0, 0, 0.3) 50%,   
+        rgba(0, 0, 0, 0.6) 75%,   
+        rgba(0, 0, 0, 0.9) 100%   
+    );
+    z-index: -1;
+}
+
+/* Applique la même police partout */
+h1, h2, h3, h4, h5, h6, p, button, input, textarea, blockquote {
+    font-family: 'Poppins', sans-serif; /* Police moderne */
+}
+
