@@ -1,124 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-
-/* Applique la police de l'input partout */
-body,
-h1, h2, h3, h4, h5, h6,
-p, button, input, textarea, blockquote {
-    font-family: inherit; /* Hérite de la police de l'input */
+/* ✅ Police globale */
+body, h1, h2, h3, h4, h5, h6, p, button, input, textarea, blockquote {
+    font-family: 'Poppins', sans-serif;
 }
 
-/* Centrage de la carte */
-.quote-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-}
-
-/* Formulaire */
-.quote-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 600px;
-    margin-top: 20px;
-}
-
-/* Citation */
-.quote-text {
-    color: white;
-    font-size: 20px;
-    font-style: italic;
-}
-
-/* Titre */
-.quote-title {
-    color: white;
-    font-size: 24px;
-    font-weight: bold;
-}
-
-/* Zone de texte */
-.quote-input {
-    width: 100%;
-    height: 50px;
-    padding: 12px;
-    font-size: 18px;
-    border: 2px solid #363636;
-    background-color: #121212;
-    color: white;
-    border-radius: 8px;
-    outline: none;
-    transition: border-color 0.3s ease-in-out;
-    font-family: inherit; /* Assure que la police est utilisée partout */
-}
-
-.quote-input:focus {
-    border-color: #f0c65c;
-}
-
-/* Bouton Ajouter */
-.quote-button {
-    margin-top: 15px;
-    padding: 12px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    text-transform: uppercase;
-    background-color: #d4af37;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: transform 0.2s ease-in-out, background-color 0.3s ease-in-out;
-}
-
-.quote-button:hover {
-    transform: scale(1.05);
-    background-color: #f0c65c;
-}
-
-/* Applique la même police à tout le texte */
-.citation-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: white;
-    font-family: inherit; /* Uniformisation */
-}
-
-.citation-text {
-    font-size: 1.2rem;
-    font-style: italic;
-    color: white;
-    font-family: inherit; /* Uniformisation */
-}
-
-/* Fond d'écran */
+/* ✅ Fond d'écran */
 body {
-    font-family: 'Poppins', sans-serif; /* Police moderne */
     color: white;
     background: url('/bilbon.jpeg') no-repeat center center fixed;
     background-size: cover;
     height: 100vh;
     width: 100vw;
-    overflow-x: hidden;
-    position: relative;
+    overflow: hidden; /* ✅ Empêche le scroll global */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
-
-/* Calque sombre couvrant TOUTE la page et estompé */
+/* ✅ Calque sombre couvrant tout l'écran */
 body::before {
     content: "";
     position: fixed;
@@ -136,8 +42,197 @@ body::before {
     z-index: -1;
 }
 
-/* Applique la même police partout */
-h1, h2, h3, h4, h5, h6, p, button, input, textarea, blockquote {
-    font-family: 'Poppins', sans-serif; /* Police moderne */
+/* ✅ Conteneur principal FIXE au centre */
+.quote-container {
+    position: fixed !important; /* ✅ Le bloc ne bouge plus */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* ✅ Centre précisément */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+    z-index: 10; /* ✅ Toujours au-dessus */
 }
 
+/* ✅ Formulaire FIXE */
+.fixed-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+}
+
+/* ✅ Zone de saisie */
+.quote-input, .author-input {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    border: 2px solid #363636;
+    background-color: #121212;
+    color: white;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s ease-in-out;
+    font-family: inherit;
+}
+
+/* ✅ Zone de saisie de l'auteur */
+.author-input {
+    height: 40px;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+/* ✅ Effet focus */
+.quote-input:focus, .author-input:focus {
+    border-color: #f0c65c;
+}
+
+/* ✅ Boutons */
+.quote-button, .delete-button {
+    margin-top: 15px;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: #d4af37;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+/* ✅ Effet hover bouton */
+.quote-button:hover, .delete-button:hover {
+    transform: scale(1.05);
+    background-color: #f0c65c;
+}
+
+/* ✅ Bouton Supprimer plus petit */
+.delete-button {
+    padding: 6px 10px;
+    font-size: 14px;
+    background-color: #d4af3700;
+}
+
+/* ✅ Conteneur des citations */
+.quote-list-container {
+    position: relative;
+    width: 98%;
+    max-width: 600px;
+    height: 250px; /* ✅ Hauteur fixe */
+    overflow-y: auto !important; /* ✅ Scroll vertical forcé */
+    overflow-x: hidden !important; /* ✅ Désactivation scroll horizontal */
+    border-radius: 8px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* ✅ Aligner les citations en haut */
+    transition: opacity 0.3s ease-in-out, max-height 0.3s ease-in-out;
+}
+
+/* ✅ Personnalisation de la scrollbar */
+.quote-list-container::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* ✅ Fond de la barre de scroll transparent */
+.quote-list-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* ✅ Apparence moderne de la barre */
+.quote-list-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 215, 0, 0.7);
+    border-radius: 10px;
+    transition: background 0.3s ease-in-out;
+}
+
+/* ✅ Effet au survol */
+.quote-list-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 215, 0, 1);
+}
+
+/* ✅ Structure des citations */
+.component {
+    display: flex;
+    flex-direction: column; /* ✅ Organise en colonne */
+    align-items: center; /* ✅ Centre tout horizontalement */
+    justify-content: center;
+    text-align: center;
+    width: 85%;
+    max-width: 500px;
+    padding: 10px;
+    padding-top: 1px;
+    margin: 5px;
+    margin-bottom: 20px;
+    margin-left: 35px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 45px;
+    position: relative; /* ✅ Permet de positionner le bouton à droite */
+    padding-bottom: 27px;
+}
+
+/* ✅ Citation bien centrée */
+.quote-text {
+    color: white;
+    font-size: 20px;
+    font-style: italic;
+    text-align: center;
+    max-width: 90%;
+    margin-bottom: 10px; /* ✅ Espacement entre citation et auteur */
+}
+
+/* ✅ Auteur centré sous la citation */
+.quote-author {
+    font-size: 16px;
+    font-weight: bold;
+    color: #f0c65c;
+    text-align: center;
+    display: block; /* ✅ S'assure qu'il est sous la citation */
+    margin-top: 5px;
+}
+
+/* ✅ Bouton "Supprimer" bien aligné à droite */
+.delete-button {
+    position: absolute;
+    right: 10px; /* ✅ Fixe à droite */
+    padding: 6px 10px;
+    font-size: 14px;
+    background-color: #d4af3700;
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* ✅ Effet hover du bouton supprimer */
+.delete-button:hover {
+    background-color: rgba(255, 215, 0, 1); /* ✅ Rouge semi-transparent */
+}
+
+/* ✅ Animation d’apparition */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ✅ Animation de disparition */
+@keyframes fadeOutDown {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(20px); }
+}
+
+/* ✅ Classe appliquée quand les citations sont affichées */
+.quote-item.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease-in-out forwards;
+}
+
+/* ✅ Classe appliquée quand on cache les citations */
+.quote-item.fade-out {
+    animation: fadeOutDown 0.5s ease-in-out forwards;
+}
